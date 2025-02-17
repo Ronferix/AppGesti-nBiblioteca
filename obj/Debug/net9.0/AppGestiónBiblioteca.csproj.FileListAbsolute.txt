@@ -1,0 +1,4 @@
+C:\Users\alber\source\repos\AppGestiónBiblioteca\AppGestiónBiblioteca\obj\Debug\net9.0\AppGestiónBiblioteca.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alber\source\repos\AppGestiónBiblioteca\AppGestiónBiblioteca\obj\Debug\net9.0\AppGestiónBiblioteca.AssemblyInfoInputs.cache
+C:\Users\alber\source\repos\AppGestiónBiblioteca\AppGestiónBiblioteca\obj\Debug\net9.0\AppGestiónBiblioteca.AssemblyInfo.cs
+C:\Users\alber\source\repos\AppGestiónBiblioteca\AppGestiónBiblioteca\obj\Debug\net9.0\AppGestiónBiblioteca.csproj.CoreCompileInputs.cache
