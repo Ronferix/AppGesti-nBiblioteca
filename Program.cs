@@ -1,17 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Numerics;
+using System.Reflection.Metadata.Ecma335;
 using System.Runtime.InteropServices;
 
 class App
 {
     static void Main()
     {
+        int option = 0;
         var library = new Library();
-        library.AddBook();
         var menus = new Menus();
-        int mainMenu = menus.showMainMenu();
-        int bookMenu = menus.showBookMenu();
-        int userMenu = menus.showUserMenu();
+        while (true)
+        {
+            option = menus.ShowMainMenu();
+            switch(option)
+            {
+                case 1:
+                    menus.BookMenu(library);
+                    break;
+
+                case 2:
+                    menus.UserMenu();
+                    break;
+
+                case 3:
+                    return;
+            }
+        }
     }
 }
 
@@ -209,8 +225,13 @@ class Library
 
         return genres;
     }
+
 }
-public class Book
+class Entity
+{
+    public int ID { get;}
+}
+class Book : Entity
 {
     public string Title { get; set; }
     public string Description { get; set; }
@@ -251,9 +272,19 @@ public class Book
 
 }
 
+class Search()
+{
+    public T SearchByID<T>(List<T> list, int searchID) where T : Entity
+    {
+        return list.FirstOrDefault(item => item.ID == searchID);
+    }
+
+    // public SearchByName() { } -> to implement
+}
+
 class Menus
 {
-    public int showMainMenu()
+    public int ShowMainMenu()
     {
         while (true)
         {
@@ -274,7 +305,7 @@ class Menus
         }
     }
 
-    public int showBookMenu()
+    private int ShowBookMenu()
     {
         while (true)
         {
@@ -298,7 +329,32 @@ class Menus
         }
     }
 
-    public int showUserMenu()
+    public void BookMenu(Library library)//not finished yet
+    {
+        while(true)
+        {
+
+            int option = ShowBookMenu();
+            switch (option)
+            {
+                case 1:
+                    library.AddBook();
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:
+                    break;
+            }
+        }
+    }
+
+    public int ShowUserMenu()
     {
         while (true)
         {
@@ -320,5 +376,10 @@ class Menus
 
             Console.WriteLine("Error! incorrect input, use numbers or select a valid option");
         }
-    }  
+    }
+
+    public void UserMenu()
+    {
+
+    }//not finished yet
 }
