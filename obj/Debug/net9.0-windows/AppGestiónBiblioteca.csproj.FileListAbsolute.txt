@@ -12,3 +12,4 @@ C:\Users\alber\source\repos\AppGestiónBiblioteca\AppGestiónBiblioteca\obj\Debu
 C:\Users\alber\source\repos\AppGestiónBiblioteca\AppGestiónBiblioteca\obj\Debug\net9.0-windows\AppGestiónBiblioteca.pdb
 C:\Users\alber\source\repos\AppGestiónBiblioteca\AppGestiónBiblioteca\obj\Debug\net9.0-windows\AppGestiónBiblioteca.genruntimeconfig.cache
 C:\Users\alber\source\repos\AppGestiónBiblioteca\AppGestiónBiblioteca\obj\Debug\net9.0-windows\ref\AppGestiónBiblioteca.dll
+C:\Users\alber\source\repos\AppGestiónBiblioteca\AppGestiónBiblioteca\obj\Debug\net9.0-windows\AppGestiónBiblioteca.sourcelink.json
