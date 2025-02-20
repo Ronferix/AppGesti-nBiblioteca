@@ -300,14 +300,14 @@ class Menus
             $"2 - Users\n" +
             $"3 - Exit\n" +
             $"Option: ");
+
         return textControl.GetOptionForMenus(strForUser, 3); 
     }
 
     private int ShowBookMenu()
     {
-        while (true)
-        {
-            Console.WriteLine($"Welcome to the library app!\n-----------------------------------\n" +
+
+        string strForUser = ($"Welcome to the library app!\n-----------------------------------\n" +
             $"Select one of the following options:\n" +
             $"1 - Add book\n" +
             $"2 - Edit book\n" +
@@ -316,15 +316,7 @@ class Menus
             $"5 - Return to main menu\n" +
             $"6 - Exit");
 
-            string input = Console.ReadLine();
-
-            if ((!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int inputToInt)) && (inputToInt > 0 && inputToInt < 7))
-            {
-                return inputToInt;
-            }
-
-            Console.WriteLine("Error! incorrect input, use numbers or select a valid option");
-        }
+        return textControl.GetOptionForMenus(strForUser, 6);
     }
 
     public void BookMenu(Library library)//not finished yet
@@ -357,23 +349,17 @@ class Menus
     {
         while (true)
         {
-            Console.WriteLine($"Welcome to the library app!\n-----------------------------------\n" +
+            string strForUser = ($"Welcome to the library app!\n-----------------------------------\n" +
             $"Select one of the following options:\n" +
             $"1 - Add user\n" +
             $"2 - Edit user\n" +
             $"3 - Delete user\n" +
             $"4 - Search user\n" +
             $"5 - Return to main menu\n" +
-            $"6 - Exit");
+            $"6 - Exit\n" +
+            $"Option: ");
 
-            var input = Console.ReadLine();
-
-            if ((!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int inputToInt)) && (inputToInt > 0 && inputToInt < 7))
-            {
-                return inputToInt;
-            }
-
-            Console.WriteLine("Error! incorrect input, use numbers or select a valid option");
+            textControl.GetOptionForMenus(strForUser, 6);
         }
     }
 
