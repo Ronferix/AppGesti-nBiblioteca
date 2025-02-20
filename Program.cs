@@ -33,7 +33,7 @@ class App
 
 class Library
 {
-    List<Book> booksInventory = new List<Book>();
+    public List<Book> booksInventory = new List<Book>();
     int IdForNextBook = 1;
     Queue<int> availableIDs = new Queue<int>();
 
@@ -229,8 +229,9 @@ class Library
 }
 class Entity
 {
-    public int ID { get;}
+    public int ID { get; set; }
 }
+
 class Book : Entity
 {
     public string Title { get; set; }
@@ -280,29 +281,26 @@ class Search()
     }
 
     // public SearchByName() { } -> to implement
+
+    public T SelectTypeOfSearch<T>(List<T> list, int searchID) where T : Entity
+    {
+        Console.Write("Select one option for your search:\n1 - Search by ID\n2 - Search by name\n3 - Cancel search\nOption: ");
+        return list.FirstOrDefault(item => item.ID == searchID);
+    }
 }
 
 class Menus
 {
+    TextControl textControl = new TextControl();
     public int ShowMainMenu()
     {
-        while (true)
-        {
-            Console.WriteLine($"Welcome to the library app!\n-----------------------------------\n" +
+        string strForUser = ($"Welcome to the library app!\n-----------------------------------\n" +
             $"Select one of the following options:\n" +
             $"1 - Books\n" +
             $"2 - Users\n" +
-            $"3 - Exit");
-
-            var input = Console.ReadLine();
-
-            if ((!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int inputToInt)) && (inputToInt > 0 && inputToInt < 4))
-            {
-                return inputToInt;
-            }
-
-            Console.WriteLine("Error! incorrect input, use numbers");
-        }
+            $"3 - Exit\n" +
+            $"Option: ");
+        return textControl.GetOptionForMenus(strForUser, 3); 
     }
 
     private int ShowBookMenu()
@@ -318,7 +316,7 @@ class Menus
             $"5 - Return to main menu\n" +
             $"6 - Exit");
 
-            var input = Console.ReadLine();
+            string input = Console.ReadLine();
 
             if ((!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int inputToInt)) && (inputToInt > 0 && inputToInt < 7))
             {
@@ -341,6 +339,7 @@ class Menus
                     library.AddBook();
                     break;
                 case 2:
+                    
                     break;
                 case 3:
                     break;
@@ -382,4 +381,62 @@ class Menus
     {
 
     }//not finished yet
+}
+
+class TextControl
+{
+    public string GetStringFromUser(string strForUser)
+    {
+        string input;
+        while (true)
+        {
+            Console.Write(strForUser);
+            input = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(input))
+            {
+                return input;
+            }
+
+            Console.WriteLine("Error! Empty info is not allowed");
+        }
+    }
+
+    public int GetIntFromUser(string strForUser)
+    {
+        while (true)
+        {
+            Console.Write(strForUser);
+            var input = Console.ReadLine();
+
+            if (!string.IsNullOrWhiteSpace(input) && int.TryParse(input, out int inputToInt))
+            {
+                return inputToInt;
+            }
+
+            Console.WriteLine("Error! A no int numeric value will show error, as empty inputs will do");
+        }
+    }
+
+    public int GetOptionForMenus(string strForUser, int optionRange)
+    {
+        while (true)
+        {
+            Console.Write(strForUser);
+            char input = Console.ReadKey().KeyChar;
+            Console.WriteLine();
+
+            if (char.IsDigit(input))
+            {
+                int option = input - '0';
+
+                if (option >= 1 && option <= optionRange)
+                {
+                    return option;
+                }
+            }
+
+            Console.WriteLine($"Error! Enter a non empty value between 1 and {optionRange}.");
+        }
+    }
 }
